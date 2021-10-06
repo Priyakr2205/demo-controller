@@ -31,7 +31,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	samplecontrollerk8siov1alpha1 "github.com/example/demo-controller/api/v1alpha1"
+	democontrollerk8siov1alpha1 "github.com/example/demo-controller/api/v1alpha1"
 	"github.com/example/demo-controller/controllers"
 	//+kubebuilder:scaffold:imports
 )
@@ -44,7 +44,7 @@ var (
 func init() {
 	utilruntime.Must(clientgoscheme.AddToScheme(scheme))
 
-	utilruntime.Must(samplecontrollerk8siov1alpha1.AddToScheme(scheme))
+	utilruntime.Must(democontrollerk8siov1alpha1.AddToScheme(scheme))
 	//+kubebuilder:scaffold:scheme
 }
 
@@ -71,18 +71,18 @@ func main() {
 		Port:                   9443,
 		HealthProbeBindAddress: probeAddr,
 		LeaderElection:         enableLeaderElection,
-		LeaderElectionID:       "829650e1.k8s.io",
+		LeaderElectionID:       "829650e1.example.com",
 	})
 	if err != nil {
 		setupLog.Error(err, "unable to start manager")
 		os.Exit(1)
 	}
 
-	if err = (&controllers.FooReconciler{
+	if err = (&controllers.DemoReconciler{
 		Client: mgr.GetClient(),
 		Scheme: mgr.GetScheme(),
 	}).SetupWithManager(mgr); err != nil {
-		setupLog.Error(err, "unable to create controller", "controller", "Foo")
+		setupLog.Error(err, "unable to create controller", "controller", "Demo")
 		os.Exit(1)
 	}
 	//+kubebuilder:scaffold:builder

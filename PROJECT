@@ -1,4 +1,4 @@
-domain: k8s.io
+domain: example.com
 layout:
 - go.kubebuilder.io/v3
 plugins:
@@ -11,9 +11,9 @@ resources:
     crdVersion: v1
     namespaced: true
   controller: true
-  domain: k8s.io
-  group: samplecontroller.k8s.io
-  kind: Foo
+  domain: example.com
+  group: democontroller.k8s.io
+  kind: Demo
   path: github.com/example/demo-controller/api/v1alpha1
   version: v1alpha1
 version: "3"
