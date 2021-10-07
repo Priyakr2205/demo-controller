@@ -1,7 +1,0 @@
-apiVersion: democontroller.k8s.io.example.com/v1alpha1
-kind: Demo
-metadata:
-  name: demo-sample
-spec:
-  # Add fields here
-  foo: bar
